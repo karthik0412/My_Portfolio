@@ -1,4 +1,4 @@
-import { PortfolioLayout } from "@/components/PortfolioLayout";
+import { PortfolioLayout } from "@/components/PortfolioLayout.jsx";
 
 const Index = () => {
   return <PortfolioLayout />;

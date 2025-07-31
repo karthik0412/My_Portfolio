@@ -4,7 +4,7 @@ import { Float, Text3D, OrbitControls } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
 
-const FloatingIcon = ({ position, color }: { position: [number, number, number]; color: string }) => {
+const FloatingIcon = ({ position, color }) => {
   return (
     <Float speed={2} rotationIntensity={1} floatIntensity={2}>
       <mesh position={position}>

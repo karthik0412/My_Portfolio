@@ -1,11 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-interface NavigationProps {
-  currentSection: number;
-  setCurrentSection: (section: number) => void;
-}
-
 const sections = [
   { id: 0, name: "Hero", label: "Home" },
   { id: 1, name: "About", label: "About" },
@@ -18,7 +13,7 @@ const sections = [
   { id: 8, name: "Profiles", label: "Profiles" },
 ];
 
-export const Navigation = ({ currentSection, setCurrentSection }: NavigationProps) => {
+export const Navigation = ({ currentSection, setCurrentSection }) => {
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}

@@ -17,7 +17,7 @@ export const PortfolioLayout = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const handleSectionChange = (newSection: number) => {
+  const handleSectionChange = (newSection) => {
     if (newSection === currentSection || isTransitioning) return;
     
     setIsTransitioning(true);
@@ -29,7 +29,7 @@ export const PortfolioLayout = () => {
 
   // Handle keyboard navigation
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       if (e.key === "ArrowDown" && currentSection < sections.length - 1) {
         handleSectionChange(currentSection + 1);
       } else if (e.key === "ArrowUp" && currentSection > 0) {
