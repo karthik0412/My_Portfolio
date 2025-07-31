@@ -3,11 +3,11 @@ import Particles from "react-particles";
 import { loadSlim } from "@tsparticles/slim";
 
 export const ParticleBackground = () => {
-  const particlesInit = useCallback(async (engine: any) => {
+  const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container?: any) => {
+  const particlesLoaded = useCallback(async (container) => {
     // Optional callback when particles are loaded
   }, []);
 
