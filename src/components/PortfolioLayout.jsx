@@ -2,24 +2,38 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ParticleBackground } from "./ParticleBackground";
 import { Navigation } from "./Navigation";
+
+// ✅ Import all sections
 import { HeroSection } from "./sections/HeroSection";
 import { AboutSection } from "./sections/AboutSection";
 import { CTASection } from "./sections/CTASection";
+import { ResumeSection } from "./sections/ResumeSection";
+import { ProjectsSection } from "./sections/ProjectsSection";
+import { SkillsSection } from "./sections/SkillsSection";
+import { ContactSection } from "./sections/ContactSection";
+import { ArticlesSection } from "./sections/ArticlesSection";
+import { ProfilesSection } from "./sections/ProfilesSection";
 
+// ✅ Define sections in order
 const sections = [
   { id: 0, component: HeroSection },
   { id: 1, component: AboutSection },
   { id: 2, component: CTASection },
-  // More sections will be added here
+  { id: 3, component: ResumeSection },
+  { id: 4, component: ProjectsSection },
+  { id: 5, component: SkillsSection },
+  { id: 6, component: ContactSection },
+  { id: 7, component: ArticlesSection },
+  { id: 8, component: ProfilesSection },
 ];
 
 export const PortfolioLayout = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  // ✅ Handle navigation clicks
   const handleSectionChange = (newSection) => {
     if (newSection === currentSection || isTransitioning) return;
-    
     setIsTransitioning(true);
     setTimeout(() => {
       setCurrentSection(newSection);
@@ -27,7 +41,7 @@ export const PortfolioLayout = () => {
     }, 300);
   };
 
-  // Handle keyboard navigation
+  // ✅ Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowDown" && currentSection < sections.length - 1) {
@@ -45,25 +59,25 @@ export const PortfolioLayout = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Particle Background */}
+      {/* ✅ Particle Background */}
       <ParticleBackground />
-      
-      {/* Navigation */}
-      <Navigation 
-        currentSection={currentSection} 
+
+      {/* ✅ Navigation */}
+      <Navigation
+        currentSection={currentSection}
         setCurrentSection={handleSectionChange}
       />
 
-      {/* Main Content */}
+      {/* ✅ Current Section Content */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSection}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -50 }}
-          transition={{ 
-            duration: 0.6, 
-            ease: [0.645, 0.045, 0.355, 1.000] 
+          transition={{
+            duration: 0.6,
+            ease: [0.645, 0.045, 0.355, 1.0],
           }}
           className="relative z-10"
         >
@@ -71,7 +85,7 @@ export const PortfolioLayout = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Section Indicators */}
+      {/* ✅ Section Dots Indicator */}
       <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50">
         <div className="flex flex-col space-y-3">
           {sections.map((section) => (
@@ -88,7 +102,7 @@ export const PortfolioLayout = () => {
         </div>
       </div>
 
-      {/* Scroll Hint */}
+      {/* ✅ Scroll Hint */}
       <motion.div
         className="fixed bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-muted-foreground flex items-center space-x-2 z-50"
         initial={{ opacity: 0 }}
@@ -98,7 +112,7 @@ export const PortfolioLayout = () => {
         <span>Use arrow keys or navigation to explore</span>
       </motion.div>
 
-      {/* Loading Overlay */}
+      {/* ✅ Loading Overlay */}
       <AnimatePresence>
         {isTransitioning && (
           <motion.div

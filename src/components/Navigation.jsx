@@ -14,12 +14,13 @@ const sections = [
 ];
 
 export const Navigation = ({ currentSection, setCurrentSection }) => {
+  const isHidden = typeof document !== 'undefined' && document.body?.getAttribute('data-hide-nav') === 'true';
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50"
+      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-200 ${isHidden ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
     >
       <div className="glass-card px-6 py-3 rounded-2xl">
         <div className="flex items-center space-x-1">
