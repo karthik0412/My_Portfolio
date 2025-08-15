@@ -44,18 +44,18 @@ export const Navigation = ({ currentSection, setCurrentSection }) => {
   }, [isOpen]);
 
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-200 ${
-        isHidden ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}
-    >
-      <div className="glass-card px-6 py-3 rounded-2xl">
-        <div className="flex items-center justify-between">
-          {/* Desktop Menu - Centered */}
-          <div className="hidden md:flex items-center justify-center w-full">
+    <>
+      {/* Desktop Navigation - Centered */}
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-200 hidden md:block ${
+          isHidden ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
+        <div className="glass-card px-6 py-3 rounded-2xl">
+          <div className="flex items-center justify-center">
             <div className="flex space-x-1">
               {sections.map((section) => (
                 <Button
@@ -77,19 +77,30 @@ export const Navigation = ({ currentSection, setCurrentSection }) => {
               ))}
             </div>
           </div>
-
-          {/* Mobile Hamburger - Fixed Top Right */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(true)}
-              className="text-white text-2xl focus:outline-none"
-              aria-label="Open Menu"
-            >
-              ☰
-            </button>
-          </div>
         </div>
-      </div>
+      </motion.nav>
+
+      {/* Mobile Toggle Button - Fixed Top Left */}
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className={`fixed top-6 left-6 z-50 transition-opacity duration-200 md:hidden ${
+          isHidden ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
+        <button
+          onClick={() => setIsOpen(true)}
+          className="glass-card p-3 rounded-xl focus:outline-none"
+          aria-label="Open Menu"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+            <path d="M3 6H21" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+            <path d="M3 18H21" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </button>
+      </motion.div>
 
       {/* Mobile Side Drawer */}
       <AnimatePresence>
@@ -113,19 +124,16 @@ export const Navigation = ({ currentSection, setCurrentSection }) => {
               className="fixed top-0 left-0 h-full w-3/4 max-w-xs bg-background/95 backdrop-blur-lg z-50 shadow-2xl border-r border-gray-800"
             >
               <div className="p-6 h-full flex flex-col">
-                {/* Drawer Header */}
-                <div className="flex justify-between items-center pb-6 border-b border-gray-800">
-                  <h2 className="text-xl font-bold text-white">Navigation</h2>
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="p-2 rounded-full hover:bg-gray-800 transition-colors"
-                  >
-                    <X className="w-6 h-6 text-white" />
-                  </button>
-                </div>
+                {/* Close Button */}
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-800 transition-colors"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
                 
                 {/* Menu Items */}
-                <div className="flex-1 overflow-y-auto py-6 space-y-2">
+                <div className="flex-1 overflow-y-auto pt-16 space-y-2">
                   {sections.map((section) => (
                     <Button
                       key={section.id}
@@ -160,6 +168,6 @@ export const Navigation = ({ currentSection, setCurrentSection }) => {
           </>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 };
