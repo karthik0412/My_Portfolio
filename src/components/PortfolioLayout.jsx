@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ParticleBackground } from "./ParticleBackground";
 import { Navigation } from "./Navigation";
@@ -31,6 +31,11 @@ export const PortfolioLayout = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  // ✅ Refs for direct jump (if you need later for scroll)
+  const resumeRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
+
   // ✅ Handle navigation clicks
   const handleSectionChange = (newSection) => {
     if (newSection === currentSection || isTransitioning) return;
@@ -54,6 +59,11 @@ export const PortfolioLayout = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentSection]);
+
+  // ✅ Jump functions
+  const jumpToResume = () => setCurrentSection(3);
+  const jumpToProjects = () => setCurrentSection(4); // Explore My Work
+  const jumpToContact = () => setCurrentSection(6); // Get in Touch
 
   const CurrentSectionComponent = sections[currentSection]?.component;
 
@@ -81,7 +91,14 @@ export const PortfolioLayout = () => {
           }}
           className="relative z-10"
         >
-          {CurrentSectionComponent && <CurrentSectionComponent />}
+          {CurrentSectionComponent && (
+            <CurrentSectionComponent
+              setCurrentSection={handleSectionChange}
+              jumpToResume={jumpToResume}
+              jumpToProjects={jumpToProjects}
+              jumpToContact={jumpToContact} // ✅ Passing new function
+            />
+          )}
         </motion.div>
       </AnimatePresence>
 

@@ -32,9 +32,12 @@ const Scene3D = () => {
   );
 };
 
-export const HeroSection = () => {
+export const HeroSection = ({ jumpToProjects, jumpToContact }) => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-[#181825] to-[#232347] px-4 md:px-8" style={{ minHeight: 'calc(100vh - 80px)', marginTop: '80px' }}>
+    <section
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-[#181825] to-[#232347] px-4 md:px-8"
+      style={{ minHeight: 'calc(100vh - 80px)', marginTop: '80px' }}
+    >
       {/* 3D Background */}
       <div className="absolute inset-0 z-0 opacity-30">
         <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
@@ -130,7 +133,7 @@ export const HeroSection = () => {
               variant="hero" 
               size="hero" 
               className="w-full sm:w-auto px-6 py-3"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={jumpToProjects} // 🔹 Directly calls PortfolioLayout's jump
             >
               Explore My Work
             </Button>
@@ -138,7 +141,7 @@ export const HeroSection = () => {
               variant="neon" 
               size="lg" 
               className="w-full sm:w-auto px-6 py-3"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={jumpToContact} // 🔹 Directly calls PortfolioLayout's jump
             >
               Get In Touch
             </Button>

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, Linkedin, Phone, MapPin, Github, Copy } from "lucide-react";
 import { useCallback } from "react";
 
-export const ContactSection = () => {
+export const ContactSection = ({ jumpToResume, jumpToProjects }) => {
   const copy = useCallback((v) => navigator?.clipboard?.writeText(v), []);
 
   const contacts = [
@@ -42,7 +42,11 @@ export const ContactSection = () => {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 24 },
-    visible: (i) => ({ opacity: 1, y: 0, transition: { duration: 0.55, delay: i * 0.12 } }),
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.55, delay: i * 0.12 },
+    }),
   };
 
   return (
@@ -123,7 +127,7 @@ export const ContactSection = () => {
 
         {/* call to action */}
         <motion.div
-          className="mt-10 text-center"
+          className="mt-10 text-center flex flex-col gap-4 items-center"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -136,6 +140,20 @@ export const ContactSection = () => {
             <Mail className="h-5 w-5" />
             Send an Email
           </a>
+
+          {/* NEW BUTTONS: direct jump */}
+          {/* <button
+            onClick={jumpToResume}
+            className="px-6 py-3 rounded-xl text-white bg-gradient-to-r from-accent to-primary font-medium shadow hover:opacity-90 transition"
+          >
+            View Resume
+          </button>
+          <button
+            onClick={jumpToProjects}
+            className="px-6 py-3 rounded-xl text-white bg-gradient-to-r from-primary to-accent font-medium shadow hover:opacity-90 transition"
+          >
+            View Projects
+          </button> */}
         </motion.div>
       </div>
     </section>

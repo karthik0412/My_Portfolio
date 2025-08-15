@@ -2,21 +2,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-export const AboutSection = () => {
+export const AboutSection = ({ setCurrentSection }) => {
   const [showCerts, setShowCerts] = useState(false);
 
   const certifications = [
     {
-        title: "Data Structures And Algorithm Using Java",
+      title: "Data Structures And Algorithm Using Java",
       provider: "Infosys Springboard",
       date: "Completed: August 2024",
-        file: "/DSA.pdf"
+      file: "/DSA.pdf"
     },
     {
-        title: "Database Management System",
+      title: "Database Management System",
       provider: "Infosys Springboard",
       date: "Completed: August 2024",
-        file: "/sql.pdf"
+      file: "/sql.pdf"
     },
     {
       title: "Java Full Stack Development Training",
@@ -34,10 +34,13 @@ export const AboutSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative py-16 bg-gradient-to-b from-background to-muted" style={{ minHeight: 'calc(100vh - 80px)', marginTop: '80px' }}>
+    <section
+      className="min-h-screen flex items-center justify-center relative py-16 bg-gradient-to-b from-background to-muted"
+      style={{ minHeight: 'calc(100vh - 80px)', marginTop: '80px' }}
+    >
       <div className="container mx-auto px-6 max-w-6xl w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center justify-center w-full">
-          
+
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -146,8 +149,12 @@ export const AboutSection = () => {
               >
                 {showCerts ? "Hide Certifications" : "View Certifications"}
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="#projects">View Projects</a>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => setCurrentSection(4)}
+              >
+                View Projects
               </Button>
             </motion.div>
           </motion.div>
@@ -161,11 +168,6 @@ export const AboutSection = () => {
             className="relative flex justify-center items-center"
           >
             <div className="w-72 h-72 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl absolute -z-10 animate-pulse"></div>
-            {/* <img
-              src="#" // Replace with your image
-              alt="#"
-              className="w-80 h-80 object-cover rounded-full shadow-2xl border-4 border-primary/20"
-            /> */}
           </motion.div>
         </div>
       </div>
