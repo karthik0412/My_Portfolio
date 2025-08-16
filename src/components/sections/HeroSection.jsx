@@ -109,7 +109,7 @@ export const HeroSection = ({ jumpToProjects, jumpToContact }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            I'm a full-stack developer passionate about crafting sleek user interfaces, building high-performance backend systems, and blending creativity with clean, maintainable code. Whether it's React.js, Spring Boot, or MERN stack, I thrive on bringing concepts to life with precision and performance.
+            I'm a full-stack developer passionate about crafting sleek user interfaces, building high-performance backend systems, and blending creativity with clean, maintainable code. Whether it's React.js, Spring Boot, or Full stack, I thrive on bringing concepts to life with precision and performance.
           </motion.p>
 
           {/* Supporting Statement */}
