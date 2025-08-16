@@ -38,7 +38,7 @@ export const ResumeSection = () => {
 
         {/* Resume Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full justify-center items-stretch max-w-4xl mx-auto">
-          {/* Technical Skills */}
+          {/* TECHNICAL SKILLS - UPDATED */}
           <motion.div
             className="bg-white/10 rounded-xl shadow-md p-6 border border-white/10 backdrop-blur-sm flex flex-col h-full"
             initial={{ opacity: 0, y: 30 }}
@@ -49,24 +49,25 @@ export const ResumeSection = () => {
               <h3 className="text-xl sm:text-2xl font-semibold text-primary">Technical Skills</h3>
             </div>
             <div className="space-y-4 flex-grow">
-              <div className="flex justify-between items-start">
-                <span className="font-medium text-sm sm:text-base">Front-End:</span>
-                <span className="text-right text-sm sm:text-base">HTML, CSS, JavaScript</span>
+              <div>
+                <div className="font-semibold text-sm sm:text-base">Front-End:</div>
+                <div className="text-sm sm:text-base mt-1">HTML, CSS, JavaScript</div>
               </div>
-              <div className="flex justify-between items-start">
-                <span className="font-medium text-sm sm:text-base">Back-End:</span>
-                <span className="text-right text-sm sm:text-base">Java, J2EE, Spring Boot</span>
+              <div>
+                <div className="font-semibold text-sm sm:text-base mt-3">Back-End:</div>
+                <div className="text-sm sm:text-base mt-1">Java, J2EE, Spring Boot</div>
               </div>
-              <div className="flex justify-between items-start">
-                <span className="font-medium text-sm sm:text-base">Database:</span>
-                <span className="text-right text-sm sm:text-base">MySQL, SQL</span>
+              <div>
+                <div className="font-semibold text-sm sm:text-base mt-3">Database:</div>
+                <div className="text-sm sm:text-base mt-1">MySQL, SQL</div>
               </div>
-              <div className="flex justify-between items-start">
-                <span className="font-medium text-sm sm:text-base">Tools:</span>
-                <span className="text-right text-sm sm:text-base">GitHub, VS Code, Eclipse, Arduino IDE</span>
+              <div>
+                <div className="font-semibold text-sm sm:text-base mt-3">Tools:</div>
+                <div className="text-sm sm:text-base mt-1">GitHub, VS Code, Eclipse, IntelliJ IDEA, Arduino IDE</div>
               </div>
             </div>
           </motion.div>
+          {/* END OF UPDATED TECHNICAL SKILLS */}
 
           {/* Internships */}
           <motion.div
