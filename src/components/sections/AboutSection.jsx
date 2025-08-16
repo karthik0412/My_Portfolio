@@ -113,7 +113,7 @@ export const AboutSection = ({ setCurrentSection }) => {
               >
                 Over the past few years, I've developed skills in
                 <strong> React.js, Node.js, Java (Core & Advanced), Spring Boot, and SQL</strong>.
-                My experience includes working as a <strong>Full Stack Development Intern</strong>
+                My experience includes working as a <strong>Full Stack Development Intern </strong>
                 and a <strong>Web Designing Intern</strong>, where I contributed to building
                 responsive, user-friendly, and secure applications.
               </motion.p>
