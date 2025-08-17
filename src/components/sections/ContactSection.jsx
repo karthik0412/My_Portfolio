@@ -29,7 +29,7 @@ export const ContactSection = ({ jumpToResume, jumpToProjects }) => {
     {
       label: "LinkedIn",
       value: "linkedin.com/in/karthikraja-jb9979b319",
-      href: "https://www.linkedin.com/in/karthikraja-jb9979b319",
+      href: "https://www.linkedin.com/in/karthikraja-j-b9979b319",
       Icon: Linkedin,
     },
     {
